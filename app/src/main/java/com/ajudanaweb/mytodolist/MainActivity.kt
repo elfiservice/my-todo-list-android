@@ -10,7 +10,9 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var todoItem : EditText
     lateinit var addButton : Button
-    lateinit var todoList : ListView
+    lateinit var todoListView : ListView
+
+    val todoList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +24,6 @@ class MainActivity : AppCompatActivity() {
     private fun findAndInit() {
         todoItem = findViewById(R.id.inputToDoItem)
         addButton = findViewById(R.id.buttonAdd)
-        todoList = findViewById(R.id.todoList)
+        todoListView = findViewById(R.id.todoList)
     }
 }
