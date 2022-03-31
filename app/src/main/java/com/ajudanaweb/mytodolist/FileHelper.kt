@@ -1,10 +1,7 @@
 package com.ajudanaweb.mytodolist
 
 import android.content.Context
-import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.io.ObjectInputStream
-import java.io.ObjectOutputStream
+import java.io.*
 
 class FileHelper {
     private val FILENAME = "listinfo.dat"
@@ -19,10 +16,13 @@ class FileHelper {
     }
 
     fun readData(context: Context) : ArrayList<String> {
-        val itemList : ArrayList<String>
-        val fis : FileInputStream = context.openFileInput(FILENAME)
-        val ois = ObjectInputStream(fis)
-        itemList = ois.readObject() as ArrayList<String>
+        val itemList : ArrayList<String> = try {
+            val fis : FileInputStream = context.openFileInput(FILENAME)
+            val ois = ObjectInputStream(fis)
+            ois.readObject() as ArrayList<String>
+        } catch(e : FileNotFoundException) {
+            ArrayList()
+        }
 
         return itemList
     }
