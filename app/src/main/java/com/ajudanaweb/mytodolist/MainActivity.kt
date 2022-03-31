@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findAndInit()
+        initComponentsInScreen()
     }
 
-    private fun findAndInit() {
+    private fun initComponentsInScreen() {
         todoItem = findViewById(R.id.inputToDoItem)
         addButton = findViewById(R.id.buttonAdd)
         todoListView = findViewById(R.id.todoList)
