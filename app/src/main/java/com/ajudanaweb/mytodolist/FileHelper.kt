@@ -7,21 +7,21 @@ import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 
 class FileHelper {
-    val FILENAME = "listinfo.dat"
+    private val FILENAME = "listinfo.dat"
 
     fun writeData(item : ArrayList<String>, context : Context) {
-        //MODO_PRIVATE = file available just for this App and not for out of this App
-        var fos : FileOutputStream = context.openFileOutput(FILENAME, Context.MODE_PRIVATE)
+        //MODE_PRIVATE = file available just for this App and not for out of this App
+        val fos : FileOutputStream = context.openFileOutput(FILENAME, Context.MODE_PRIVATE)
 
-        var oas = ObjectOutputStream(fos)
+        val oas = ObjectOutputStream(fos)
         oas.writeObject(item) //write to file
         oas.close()  //close the file
     }
 
     fun readData(context: Context) : ArrayList<String> {
-        var itemList : ArrayList<String>
-        var fis : FileInputStream = context.openFileInput(FILENAME)
-        var ois = ObjectInputStream(fis)
+        val itemList : ArrayList<String>
+        val fis : FileInputStream = context.openFileInput(FILENAME)
+        val ois = ObjectInputStream(fis)
         itemList = ois.readObject() as ArrayList<String>
 
         return itemList
