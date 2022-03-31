@@ -22,8 +22,10 @@
             android:layout_margin="3dp"
             android:layout_weight="4"
             android:ems="10"
-            android:hint="Add ToDo ..."
+            android:hint="@string/input_todo_placeholder"
+            android:autofillHints="Some ToDo"
             android:inputType="textPersonName"
+            android:textColorHint="#424242"
             android:textStyle="italic" />
 
         <Button
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="ADD" />
+            android:text="@string/button_todo_add_label" />
     </LinearLayout>
 
     <ListView

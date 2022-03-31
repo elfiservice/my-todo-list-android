@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My ToDo List</string>
+    <string name="input_todo_placeholder">Add ToDo …</string>
+    <string name="button_todo_add_label">ADD</string>
 </resources>
