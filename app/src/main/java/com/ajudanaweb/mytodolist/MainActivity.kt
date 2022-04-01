@@ -1,11 +1,13 @@
 package com.ajudanaweb.mytodolist
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +47,23 @@ class MainActivity : AppCompatActivity() {
             todoItem.setText("")
             fileHelper.writeData(todoList, applicationContext)
             arrayAdapter.notifyDataSetChanged()
+        }
+
+        todoListView.setOnItemClickListener { adapterView, view, position, l ->
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("Delete Todo")
+            alert.setMessage("Do you want to delete this ToDo item ?")
+            alert.setCancelable(false)
+            alert.setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
+                dialogInterface.cancel()
+            })
+            alert.setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
+                todoList.removeAt(position)
+                arrayAdapter.notifyDataSetChanged()
+                fileHelper.writeData(todoList, applicationContext)
+            })
+
+            alert.create().show()
         }
     }
 }
