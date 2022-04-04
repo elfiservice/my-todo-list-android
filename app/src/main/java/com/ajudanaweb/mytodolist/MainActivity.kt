@@ -37,10 +37,15 @@ class MainActivity : AppCompatActivity() {
         val arrayAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            android.R.id.text1, todoList)
+            android.R.id.text1,
+            todoList)
 
         todoListView.adapter = arrayAdapter
 
+        setListeners(arrayAdapter)
+    }
+
+    private fun setListeners(arrayAdapter: ArrayAdapter<String>) {
         addButton.setOnClickListener{
             val todoName : String = todoItem.text.toString()
             todoList.add(todoName)
